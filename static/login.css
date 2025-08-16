@@ -1,0 +1,127 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+#head {
+  color: orange;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  background: #30c7bb;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.form-section {
+  display: none;
+}
+
+.form-section:first-of-type {
+  display: block;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background: linear-gradient(90deg, #c0d70d, #12c2e9, #f64f59);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.toggle-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 15px;
+  color: white;
+}
+
+.toggle-link span {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+nav {
+  background-color: #2d2d2d;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  color: orange;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Smooth form transition */
+.form-section {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-section.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  position: absolute;
+}
+
+

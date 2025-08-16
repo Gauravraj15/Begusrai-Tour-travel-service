@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/Logon.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <h1 id="head">Welcome to Begusrai Tour & Travel</h1>
+
+  
+
+  <div class="container">
+    <!-- Login Form -->
+    <div id="login-section" class="form-section">
+      <h2>Login</h2>
+      <form action="/login" method="POST">
+
+        {% if login_error == "Invalid Email" %}
+          <p style="color: red; text-align: center;">{{ login_error }}</p>
+        {% endif %}
+
+        <label for="email">Email ID</label>
+        <input type="email" id="email" name="email" required value="{{ email_value if email_value else '' }}">
+
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password" required>
+          <i class="fa-regular fa-eye-slash" onclick="togglePassword('password', this)"></i>
+        </div>
+
+        {% if login_error == "Invalid Password" %}
+          <p style="color: red; text-align: center;">{{ login_error }}</p>
+        {% endif %}
+
+        <button type="submit"><b>Login</b></button>
+      </form>
+      <p class="toggle-link">New User? <span onclick="showSignup()">Register Here</span></p>
+      <p class="toggle-link">Forgot Password? <span onclick="showForgot()">Click Here</span></p>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-section" class="form-section" style="display: none;">
+      <h2>Sign Up</h2>
+      <form action="/signup_user" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email_signup">Email ID</label>
+        <input type="email" id="email_signup" name="email_signup" required>
+
+        <label for="password_signup">Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="password_signup" name="password_signup" required>
+          <i class="fa-regular fa-eye-slash" onclick="togglePassword('password_signup', this)"></i>
+        </div>
+
+        <button type="submit"><b>Register</b></button>
+      </form>
+      <p class="toggle-link">Already have an account? <span onclick="showLogin()">Login Here</span></p>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div id="forgot-section" class="form-section" style="display: none;">
+      <h2>Reset Password</h2>
+
+      <!-- Step 1: Enter email -->
+      <form id="emailForm" onsubmit="return verifyEmail(event)">
+        <label for="email_reset">Registered Email ID</label>
+        <input type="email" id="email_reset" name="email_reset" required>
+        <button type="submit"><b>Verify Email</b></button>
+        <p id="emailError" style="color: red;"></p>
+      </form>
+
+      <!-- Step 2: Set new password -->
+      <form id="resetForm" action="/reset_password" method="POST" style="display: none;">
+        <input type="hidden" name="verified_email" id="verified_email">
+
+        <label for="new_password">New Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="new_password" name="new_password" required>
+          <i class="fa-regular fa-eye-slash" onclick="togglePassword('new_password', this)"></i>
+        </div>
+
+        <label for="confirm_password">Confirm New Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirm_password" name="confirm_password" required>
+          <i class="fa-regular fa-eye-slash" onclick="togglePassword('confirm_password', this)"></i>
+        </div>
+
+        <button type="submit"><b>Reset Password</b></button>
+      </form>
+      <p class="toggle-link">Back to <span onclick="showLogin()">Login</span></p>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - User Bookings</title>
+    <style>
+
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f0f0f0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #30c7bb;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #30c7bb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="/logout" style="float: right; background: #ff4d4d; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">Logout</a>
+    <h2 style="text-align:center;">Admin - User Queries</h2>
+    <!-- Your table here -->
+    <a href="/logout" style="float: right; background: #ff4d4d; padding: 10px 20px; color: white; text-decoration: none; border-radius: 5px;">Logout</a>
+    <h2>User Bookings</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email ID</th>
+            <th>Mobile</th>
+            <th>Address</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+        </tr>
+        {% for b in bookings %}
+        <tr>
+            <td>{{ b.name }}</td>
+            <td>{{ b.email_id }}</td>
+            <td>{{ b.mobile_no }}</td>
+            <td>{{ b.address }}</td>
+            <td>{{ b.from_location }}</td>
+            <td>{{ b.to_location }}</td>
+            <td>{{ b.travel_date }}</td>
+        </tr>
+        {% endfor %}
+        <a href="/admin/download_bookings"
+   style="padding:10px 20px; background:#30c7bb; color:white; text-decoration:none; border-radius:5px; display:inline-block; margin-top:20px;">
+   ⬇️ Download Bookings CSV
+</a>
+
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

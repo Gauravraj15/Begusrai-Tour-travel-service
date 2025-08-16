@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Your Query</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='query.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/Logon.png') }}">
+</head>
+<body>
+    <h1 id="wel">Welcome To Begusrai Tour & Travel Service</h1>
+    <br>
+    <br>
+    <div class="container">
+        <form action="/submit_problem" method="POST">
+            <label for="problemDescription"><b>Describe your problem:</b></label>
+            <textarea id="problemDescription" name="problemDescription" rows="6" required></textarea>
+            <button type="submit"><b>Submit</b></button>
+        </form>
+    </div>
+</body>
+</html>

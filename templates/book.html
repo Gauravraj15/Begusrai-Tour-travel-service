@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Journey</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='book.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/Logon.png') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <h1 id="head">Welcome To Begusarai Tour & Travel Service</h1>
+  <div class="container">
+    <h2>Book Your Journey || Make a call <i id="phone" class="fa-solid fa-phone"></i></h2>
+
+    <form id="bookingForm" action="/submit" method="POST">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="mobile_no">Mobile Number</label>
+      <input type="text" id="mobile_no" name="mobile_no" required>
+
+      <label for="email_id">Email ID</label>
+      <input type="email" id="email_id" name="email_id" required>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="from_location">From Location</label>
+      <select id="from_location" name="from_location" onchange="toggleCustomInput('from_location', 'custom_from')">
+        <option value="Begusarai">Begusarai</option>
+        <option value="Custom">Custom</option>
+      </select>
+      <input type="text" id="custom_from" name="custom_from" placeholder="Enter custom location (if selected Custom)" style="display: none;">
+
+      <br><br>
+
+      <label for="to_location">To Location</label>
+      <select id="to_location" name="to_location" onchange="toggleCustomInput('to_location', 'custom_to')">
+        <option value="">Select a destination</option>
+        <option value="Barauni">Barauni (BGS)</option>
+        <option value="Ballia">Ballia (BGS)</option>
+        <option value="Khagaria">Khagaria (BGS)</option>
+        <option value="Manjhaul">Manjhaul (Kanwar Lake)</option>
+        <option value="Sahebpur Kamal">Sahebpur Kamal</option>
+        <option value="Araria">Araria</option>
+        <option value="Arwal">Arwal</option>
+        <option value="Aurangabad">Aurangabad</option>
+        <option value="Banka">Banka</option>
+        <option value="Bhagalpur">Bhagalpur</option>
+        <option value="Bhojpur">Bhojpur</option>
+        <option value="Buxar">Buxar</option>
+        <option value="Darbhanga">Darbhanga</option>
+        <option value="East Champaran">East Champaran (Motihari)</option>
+        <option value="Gaya">Gaya</option>
+        <option value="Gopalganj">Gopalganj</option>
+        <option value="Jamui">Jamui</option>
+        <option value="Jehanabad">Jehanabad</option>
+        <option value="Kaimur">Kaimur (Bhabua)</option>
+        <option value="Katihar">Katihar</option>
+        <option value="Kishanganj">Kishanganj</option>
+        <option value="Lakhisarai">Lakhisarai</option>
+        <option value="Madhepura">Madhepura</option>
+        <option value="Madhubani">Madhubani</option>
+        <option value="Munger">Munger</option>
+        <option value="Muzaffarpur">Muzaffarpur</option>
+        <option value="Nalanda">Nalanda</option>
+        <option value="Nawada">Nawada</option>
+        <option value="Patna">Patna</option>
+        <option value="Purnia">Purnia</option>
+        <option value="Rohtas">Rohtas</option>
+        <option value="Saharsa">Saharsa</option>
+        <option value="Samastipur">Samastipur</option>
+        <option value="Saran">Saran (Chhapra)</option>
+        <option value="Sheikhpura">Sheikhpura</option>
+        <option value="Sheohar">Sheohar</option>
+        <option value="Sitamarhi">Sitamarhi</option>
+        <option value="Siwan">Siwan</option>
+        <option value="Supaul">Supaul</option>
+        <option value="Vaishali">Vaishali</option>
+        <option value="West Champaran">West Champaran (Bettiah)</option>
+        <option value="Deoghar">Deoghar (Jharkhand)</option>
+        <option value="Custom">Custom</option>
+      </select>
+      <input type="text" id="custom_to" name="custom_to" placeholder="Enter custom destination (if selected Custom)" style="display: none;">
+
+      <label for="travel_date">Travel Date</label>
+      <input type="date" id="travel_date" name="travel_date" required>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+  </div>
+
+  <script src="{{ url_for('static', filename='book.js') }}"></script>
+  
+</body>
+</html>

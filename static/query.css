@@ -1,0 +1,85 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    padding: 30px 0 10px;
+
+}
+
+header h1 {
+    color:orange;
+    font-size: 32px;
+}
+
+/* Container styling */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #30c7bb;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Textarea styling */
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+/* Submit button styling */
+button {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(90deg, #c0d70d, #12c2e9, #f64f59);
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #23cba4;
+}
+
+/* Response message styling */
+#responseMessage {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
+#wel{
+    text-align: center;
+    color: orange;
+}

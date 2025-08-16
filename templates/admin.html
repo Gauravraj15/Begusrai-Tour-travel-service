@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - User Queries</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+        th {
+            background-color: #30c7bb;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #30c7bb;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+  <div class="navbar">  
+   {% if session['user'] == 'samarkings12@gmail.com' %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+  {% endif %}
+  </div>
+    <h2>User Queries</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Problem</th>
+        </tr>
+        {% for q in queries %}
+        <tr>
+            <td>{{ q.name }}</td>
+            <td>{{ q.email }}</td>
+            <td>{{ q.problem }}</td>
+        </tr>
+        {% endfor %}
+        <a href="/admin/download_queries"
+   style="padding:10px 20px; background:#30c7bb; color:white; text-decoration:none; border-radius:5px; display:inline-block; margin-top:20px;">
+   ⬇️ Download Queries CSV
+</a>
+
+
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

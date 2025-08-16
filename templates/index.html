@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Begusrai Tour & Travel Service</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/Logon.png') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header>
+    <a href="#" class="logo"><span>S</span>oftech</a>
+
+    {% if session.get('user') == 'samarkings12@gmail.com' %}
+      <a href="/admin/bookings" style="padding: 10px; background-color: #30c7bb; color: white; border-radius: 5px; text-decoration: none;">Admin Bookings</a>
+    {% endif %}
+
+    <!-- Desktop Navigation -->
+    <ul class="navbar">
+      <li><a href="#" class="active"><b>Home</b></a></li>
+      {% if session.get('user') %}
+        <li><a href="{{ url_for('confirm_logout') }}"><b>Logout</b></a></li>
+      {% else %}
+        <li><a href="{{ url_for('login') }}"><b>Login</b></a></li>
+      {% endif %}
+      <li><a href="{{ url_for('book') }}"><b>Booking</b></a></li>
+      <li><a href="{{ url_for('query') }}"><b>Query</b></a></li>
+      <li><a href="{{ url_for('About') }}"><b>About</b></a></li>
+    </ul>
+<!-- <form action="{{ url_for('login') }}" method="POST"> -->
+
+    <!-- Mobile Menu Button -->
+    <!-- <button class="mobile-menu-btn" id="open-menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header> -->
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <button class="close-btn" id="close-menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul class="mobile-nav-list">
+      <li><a href="#" class="active"><b>Home</b></a></li>
+      {% if session.get('user') %}
+        <li><a href="{{ url_for('confirm_logout') }}"><b>Logout</b></a></li>
+      {% else %}
+        <li><a href="{{ url_for('login') }}"><b>Login</b></a></li>
+      {% endif %}
+      <li><a href="{{ url_for('book') }}"><b>Booking</b></a></li>
+      <li><a href="{{ url_for('query') }}"><b>Query</b></a></li>
+      <li><a href="{{ url_for('About') }}"><b>About</b></a></li>
+    </ul>
+  </nav>
+
+  
+
+  <!-- Add your main content here -->
+  
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="open-menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="close-btn" id="close-menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-list">
+           <li><a href="#" class="active"><b>Home</b></a></li>
+            <li><a href="{{ url_for('login') }}"><b>Login</b></a></li>
+            <li><a href="{{ url_for('book') }}"><b>Booking</b></a></li>
+            <li><a href="{{ url_for('query')}}"><b>Query</b></a></li>
+            <li><a href="{{ url_for('About')}}"><b>About</b></a></li>
+        </ul>
+    </nav>
+{% if welcome_msg %}
+<div id="welcomeBox" style="background: #ffae00; color: #fff; padding: 15px; text-align: center;">
+  <strong>{{ welcome_msg }}</strong>
+</div>
+<script>
+  setTimeout(() => {
+    document.getElementById('welcomeBox').style.display = 'none';
+  }, 5000);
+</script>
+{% endif %}
+
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <!-- Header Section -->
+        <section class="header">
+            <div class="header-content">
+                <h1>Welcome To Begusrai Tour & Travel Service</h1>
+                <h2>Travel Across The Bihar</h2>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <h1>Featured Destinations</h1>
+            <div class="container">
+                <!-- First Row -->
+                <div class="row">
+                    <!-- Kanwar Lake -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                              <img src="{{ url_for('static', filename='images/jay.jpg') }}" alt="Jaymanglagarh">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-1500</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Jaymangagarh</h4>
+                                <p>Jaymanglagarh is a peaceful and historic site, known for its ancient fort, temple, and scenic beauty—perfect for spiritual and heritage tourism </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deoghar -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/kan.jpg') }}" alt="Kanwar Lake">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-5000</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Kanwar Lake</h4>
+                                <p>Kanwar Lake is a hidden gem and one of Asia's largest freshwater lakes. With its rich birdlife and serene landscapes, it's a paradise for nature lovers and a perfect spot to unwind. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ashok Dham -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/Water.jpg') }}" alt="water park">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-2500</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Water park</h4>
+                                <p>This water park offers thrilling slides, wave pools, and family-friendly fun, making it a perfect getaway for tourists to relax, beat the heat, and enjoy joyful moments togethe</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Second Row -->
+                <div class="row">
+                    <!-- Bodhgaya -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/ash.jpg') }}" alt="Ashokdham">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-3500</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Ashok Dham</h4>
+                                <p> Ashok Dham is a divine pilgrimage site with a grand Shiva temple, serene atmosphere, and spiritual vibes—an ideal place for tourists seeking peace, devotion, and architectural beauty.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nalanda -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/nvidhya.jpg') }}" alt="Nalanda">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-2000</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Vidhyapati Dham</h4>
+                                <p>Vidhapatidham is a sacred riverside retreat featuring ancient temples, tranquil ghats, and spiritual rituals—an essential destination for tourists seeking cultural immersion, serene reflection, and timeless heritag</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rajgir -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/dev.jpg') }}" alt="Babadham">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-2800</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Deoghar -Baba Dham</h4>
+                                <p>Baba Dham is a sacred pilgrimage site renowned for its spiritual significance and stunning temple architecture. Experience the divine atmosphere and immerse yourself in rich culture.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Row - Add more destinations as needed -->
+                <div class="row">
+                    <!-- Patna Sahib -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/nal.jpg') }}" alt="Nalanda">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-1800</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Nalanda University</h4>
+                                <p>Explore the ancient Nalanda University, a UNESCO World Heritage Site. Discover the rich educational heritage and architectural marvels of ancient India.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vikramshila -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                                <img src="{{ url_for('static', filename='images/gla.jpg') }}" alt="Rajgir">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-2200</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Glass Bridge -Rajgir</h4>
+                                <p>This water park offers thrilling slides, wave pools, and family-friendly fun, making it a perfect getaway for tourists to relax, beat the heat, and enjoy joyful moments together.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add third destination in this row if needed -->
+                    <div class="col-md-4">
+                        <div class="features-box">
+                            <div class="features-img">
+                             <img src="{{ url_for('static', filename='images/budh.jpg') }}" alt="Bodhgaya">
+                            </div>
+                            <div class="details">
+                                <div class="price">
+                                    <p>Rs-1200</p>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                            </div>
+                            <div class="feature-details">
+                                <h4>Bodhgaya</h4>
+                                <p>Bodhgaya is the most sacred Buddhist pilgrimage site where Lord Buddha attained enlightenment. Visit the Mahabodhi Temple and experience spiritual tranquility.</p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <h1>Traveling Gallery</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="gallery-box">
+                             <img src="{{ url_for('static', filename='images/budh.jpg') }}" alt="Bodhgaya">
+                            <div class="gallery-text">
+                                <h4>Bodhgaya</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="gallery-box">
+                                <img src="{{ url_for('static', filename='images/dev.jpg') }}" alt="Babadham">
+                            <div class="gallery-text">
+                                <h4>Deoghar</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="gallery-box">
+                              <img src="{{ url_for('static', filename='images/jay.jpg') }}" alt="Jaymanglagarh">
+                            <div class="gallery-text">
+                                <h4>Jaymanglagarh</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="gallery-box">
+                              <img src="{{ url_for('static', filename='images/zoo.jpg') }}" alt="Zoo-safari">
+                            <div class="gallery-text">
+                                <h4>Zoo Safari</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Section -->
+        <section class="banner">
+            <div class="container">
+                <div class="banner-highlights">
+                    <h2>Get in touch for car bookings for weddings</h2>
+                    <p>Book your journey before 31st December and avail 25% flat discount!</p>
+                    <p>Book Your Journey || make a call  <i id="phone" class="fa-solid fa-phone"></i></p>
+                    <!-- <button type="button" class="booking-btn">Book Now</button> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- User Feedback Section -->
+        <section class="user-feedback">
+            <h1>Users Review</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="user-review">
+                            <p>This is a great place to visit with stunning views and an unforgettable experience!</p>
+                            <h1>Pankaj Gupta</h1>
+                            <small>Kanwar Lake</small>
+                            <!-- <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="User"> -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="user-review">
+                            <p>Amazing experience with excellent service and beautiful destinations. Highly recommended!</p>
+                            <h1>Aanand Sharma</h1>
+                            <small>Zoo Safari</small>
+                            <!-- <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="User"> -->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="user-review">
+                            <p>Spiritual journey with great arrangements. The temples were magnificent and peaceful.</p>
+                            <h1>Vivek Kumar</h1>
+                            <small>Babadham</small>
+                            <!-- <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="User"> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <section class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- <link rel="icon" href="{{ url_for('static', filename='images/Logon.png') }}"> -->
+                        <!-- <p>Experience top-notch car service with a trusted provider who has been serving Begusrai and whole  Bihar for over 20 years. Reliable, punctual, and customer-focused, ensuring every ride is safe and comfortable.</p> -->
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Features</h2>
+                        <p><i class="fas fa-check"></i>Deals & Offers</p>
+                        <p><i class="fas fa-check"></i>Customer Review</p>
+                        <p><i class="fas fa-check"></i>Cancellation Policy</p>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Quick Contact</h2>
+                        <a href="tel:+919955043593">
+                        <p><i class="fa fa-phone"></i>+91 9955043593 || 9060900635</p>
+                        </a>
+                        <a href="mailto:gau879731raj@gmail.com" target="_blank">
+                        <p><i class="fa fa-envelope"></i>gau879731raj@gmail.com</p>
+                        </a>
+                        <a href="https://www.google.com/maps/@25.4239889,86.1358486,18z?entry=ttu&g_ep=EgoyMDI1MDYxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+                        <p><i class="fa fa-home"></i>Near Railway Station in front of J k+ 2 school Begusrai Bihar</p>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <h2>Follow Us On</h2>
+                        <a href="https://www.facebook.com/gauravraj.gauravraj.3363" target="_blank">
+                        <p id="facebook"><i class="fa-brands fa-facebook"></i> Facebook</p>
+                         </a>
+                        <a href="https://www.youtube.com/@Gaurav-raj14" target="_blank">
+                        <p><i class="fa-brands fa-youtube"></i> YouTube</p>
+                        </a>
+                        <a href="https://www.instagram.com/samarroy_14/" target="_blank">
+                        <p><i class="  fa-brands fa-square-instagram"></i>instagram</p>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <p class="copyright"><i class="fa-solid fa-copyright"></i>2025 Begusrai Tour & Travel Service. All rights reserved. made by Softech Solution</p>
+            </div>
+        </section>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- <script src="script.js"></script> -->
+
+</body>
+</html>
+  
