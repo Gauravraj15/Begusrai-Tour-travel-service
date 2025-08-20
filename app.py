@@ -236,6 +236,7 @@ def admin_bookings():
     all_bookings = bookings.find()
     return render_template('admin_bookings.html', bookings=all_bookings)
 
+
 @app.route('/admin/download_queries')
 def download_queries():
     if session.get('user') != ADMIN_EMAIL:
