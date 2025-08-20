@@ -260,3 +260,7 @@ def download_bookings():
 if __name__ == '__main__':
     # Bind to 0.0.0.0 for Render; use PORT env if present
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)), debug=True)
+
+app = Flask(__name__)
+
+
